@@ -1,0 +1,44 @@
+@import '../../shared/scss/variables.scss';
+
+.search-bar {
+  width: 100%;
+  font-size: $default-font-size;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  .search-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .search-label {
+      margin-bottom: 4px;
+      opacity: .5;
+    }
+  }
+  .search-input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    padding: 8px;
+    font-size: 100%;
+    color: rgba(0,0,0,0.87);
+    border: 1px solid rgba(0,0,0,0.2);
+    font-size: 120%;
+  }
+}
+
+.result-list-container {
+  padding: 16px 0;
+
+  .loader-wrapper {
+    width: 100%;
+    text-align: center;
+    mat-spinner {
+      margin: 0 auto 8px;
+    }
+
+    .load-text {
+      font-size:95%;
+      color: rgba(0,0,0,0.5);
+    }
+  }
+}

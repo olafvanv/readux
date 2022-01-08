@@ -1,0 +1,39 @@
+<mat-toolbar color="primary" class="bottom-bar">
+  <div class="bottom-bar-wrapper container">
+    <div class="bottom-nav-items">
+      <ng-container *ngFor="let item of leftNavItems">
+        <div [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+          class="bottom-nav-item">
+          <i class="nav-icon fa" [ngClass]="item.icon"></i>
+          <span class="nav-label">{{item.label}}</span>
+        </div>
+      </ng-container>
+    </div>
+    <div class="speed-dial-wrapper">
+      <button mat-fab color="primary" class="speed-dial-button" (click)="toggleDial()" [ngClass]="{'open': open}">
+        <span *ngIf="!open"><i class="fa fa-search"></i></span>
+        <span *ngIf="open"><i class="fa fa-times"></i></span>
+      </button>
+    </div>
+    <div class="bottom-nav-items">
+      <ng-container *ngFor="let item of rightNavItems">
+        <div [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+          class="bottom-nav-item">
+          <i class="nav-icon fa" [ngClass]="item.icon"></i>
+          <span class="nav-label">{{item.label}}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</mat-toolbar>
+
+<div class="dial-buttons-wrapper">
+  <ng-container *ngFor="let button of dialButtons; let i=index">
+    <div class="dial-button" [@dialToggle]="{value: open ? 'open' : 'closed', params: {pos: getPos(i)}}">
+      <button mat-fab class="button"><i [class]="button.icon"></i></button>
+      <span class="label">{{button.label}}</span>
+    </div>
+  </ng-container>
+</div>
+
+<div class="overlay" *ngIf="open"></div>

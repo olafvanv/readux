@@ -1,0 +1,23 @@
+<mat-card class="book" *ngIf="book">
+  <mat-card-title-group>
+    <mat-card-title class="title">{{title}}</mat-card-title>
+    <mat-card-subtitle>
+      <span *ngFor="let author of authors; let isLast=last">{{author}}<ng-container *ngIf="!isLast">, </ng-container></span>
+    </mat-card-subtitle>
+    <div mat-card-sm-image *ngIf="thumbnail">
+      <img class="thumbnail" [src]="thumbnail">
+    </div>
+  </mat-card-title-group>
+
+  <mat-card-content>
+    <div class="description">{{description}}</div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button color="primary">Details</button>
+    <button mat-raised-button color="primary" (click)="toggleBook()">
+      <span *ngIf="!book.inCollection">Add to Collection</span>
+      <span *ngIf="book.inCollection">Remove from Collection</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

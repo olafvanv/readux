@@ -1,0 +1,126 @@
+@import '../../shared/scss/variables.scss';
+
+$speed-dial-size: 64px;
+
+.bottom-bar {
+  .bottom-bar-wrapper {
+    position: relative;
+    display: flex;
+    height: 100%;
+  }
+
+  .bottom-nav-items {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    .bottom-nav-item {
+      flex: 1 0 50%;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 8px;
+      box-sizing: border-box;
+      opacity: .6;
+
+      .nav-icon {
+        padding: 4px 18px;
+        border-radius: 500px;
+        font-size:18px;
+        line-height: 18px;
+      }
+
+      .nav-label {
+        font-size: $default-font-size;
+        line-height: $default-font-size;
+        font-weight: normal;
+        margin-top: 4px;
+      }
+
+      &.active {
+        opacity: 1;
+        .nav-icon {
+          background-color: rgba(0,0,0,0.20);
+        }
+      }
+
+      @media screen and (max-width: $breakpoint-xs) {
+        padding: 4px;
+
+        .nav-icon {
+          font-size: 16px;
+          line-height: 16px;
+        }
+      }
+    }
+  }
+  .speed-dial-wrapper {
+    width: $speed-dial-size;
+    .speed-dial-button {
+      position: absolute;
+      top: -$speed-dial-size * 0.25;
+      left:0;
+      right: 0;
+      margin: auto;
+      width: $speed-dial-size;
+      height: $speed-dial-size;
+      box-shadow: 0 -3px 1px 0 rgba(255,255,255);
+      transition: none;
+      font-size: 100%;
+      z-index: 102;
+
+      &.open {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.dial-buttons-wrapper {
+  position: absolute;
+  bottom: 64px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-wrap: wrap;
+  max-width: 500px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 101;
+
+  .dial-button {
+    // flex: 0 0 33%;
+    // display: flex;
+    width: 33%;
+    display:inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -24px;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    .button {
+      margin-bottom: 8px;
+      background-color: #efefef;
+    }
+    .label {
+      color: #fff;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.6);
+  top:0;
+  left: 0;
+  z-index: 100;
+}

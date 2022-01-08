@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="navigation-bar">
+  <div class="navbar-wrapper container">
+    <h2 class="app-title" [routerLink]="'/'">Readux</h2>
+
+    <ul class="navbar">
+      <li *ngFor="let item of navItems" [routerLink]="item.path" [routerLinkActive]="'active'">
+        <i class="fa {{item.icon}} icon"></i>{{item.label}}
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<app-bottom-bar></app-bottom-bar>

@@ -1,0 +1,20 @@
+<div class="search-bar">
+  <div class="container search-wrapper">
+    <span class="search-label">Search by title</span>
+    <input placeholder="Search" class="search-input" [value]="query$ | async" #search>
+  </div>
+</div>
+
+<div class="container result-list-container" *ngIf="(books$ | async) as books">
+  <div class="row">
+    <div class="loader-wrapper" *ngIf="searching$ | async">
+      <mat-spinner [diameter]="20" color="primary" mode="indeterminate"></mat-spinner>
+      <span class="load-text">Searching...</span>
+    </div>
+  </div>
+  <div class="row gy-4 gx-4">
+    <div *ngFor="let book of books" class="book-container col-sm-12 col-md-6 col-lg-4">
+      <app-book-card [book]="book"></app-book-card>
+    </div>
+  </div>
+</div>
