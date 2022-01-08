@@ -3,19 +3,20 @@ import { NgModule } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterModule } from "@angular/router";
-import { BottomBarComponent } from "./bottom-bar/bottom-bar.component";
-import { NavigationComponent } from "./navigation.component";
+import { BottomBarComponent } from "./bottom-bar.component";
 
 @NgModule({
-  declarations: [NavigationComponent, BottomBarComponent],
+  declarations: [
+    BottomBarComponent
+  ],
   imports: [
     CommonModule,
+    RouterModule,
     MatToolbarModule,
-    MatButtonModule,
-    RouterModule
+    MatButtonModule
   ],
   exports: [
-    NavigationComponent
+    BottomBarComponent
   ]
 })
-export class NavigationModule { }
+export class BottomBarModule {}

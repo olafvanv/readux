@@ -4,7 +4,7 @@ import MyCollectionState from "../my-collection/my-collection.state";
 import { Book } from "src/app/models/book.interface";
 
 const bookSearchFeature = createFeatureSelector<BookSearchState>('BookSearch');
-const collectionFeature = createFeatureSelector<MyCollectionState>('MyCollection')
+const collectionFeature = createFeatureSelector<MyCollectionState>('MyCollection');
 
 
 export const getSearchingState = createSelector(
@@ -12,7 +12,7 @@ export const getSearchingState = createSelector(
   (state) => state.Searching
 );
 
-export const getSearchResults = createSelector(
+export const getSearchResults2 = createSelector(
   bookSearchFeature,
   collectionFeature,
   (state, collection) => {
@@ -30,6 +30,10 @@ export const getSearchResults = createSelector(
     }
   }
 );
+export const getSearchResults = createSelector(
+  bookSearchFeature,
+  (state) => state.Books
+)
 
 export const getSearchQuery = createSelector(
   bookSearchFeature,

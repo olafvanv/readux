@@ -1,8 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
-import { DialButton } from '../../models/dial-button.interface';
-import { NavItem } from '../../models/nav-item.interface';
-import { SearchType } from '../../models/search-type.enum';
+import { DialButton } from '../../../models/dial-button.interface';
+import { NavItem } from '../../../models/nav-item.interface';
+import { SearchType } from '../../../models/search-type.enum';
 
 @Component({
   selector: 'app-bottom-bar',

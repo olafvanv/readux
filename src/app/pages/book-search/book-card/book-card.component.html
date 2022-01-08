@@ -16,8 +16,8 @@
   <mat-card-actions>
     <button mat-button color="primary">Details</button>
     <button mat-raised-button color="primary" (click)="toggleBook()">
-      <span *ngIf="!book.inCollection">Add to Collection</span>
-      <span *ngIf="book.inCollection">Remove from Collection</span>
+      <span *ngIf="!inCollection">Add to Collection</span>
+      <span *ngIf="inCollection">Remove from Collection</span>
     </button>
   </mat-card-actions>
 </mat-card>

@@ -1,17 +1,40 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
 import { Book } from 'src/app/models/book.interface';
-import { MyCollectionActions } from '../../../state/my-collection';
+import {
+  getMyBookCollection,
+  MyCollectionActions,
+} from '../../../state/my-collection';
 
 @Component({
   selector: 'app-book-card',
   templateUrl: './book-card.component.html',
   styleUrls: ['./book-card.component.scss'],
 })
-export class BookCardComponent {
+export class BookCardComponent implements OnDestroy {
   @Input() book: Book;
 
-  constructor(private store: Store) {}
+  private subs: Subscription = new Subscription();
+  private collection: Book[] = [];
+
+  constructor(private store: Store) {
+    this.subs.add(
+      this.store
+        .select(getMyBookCollection)
+        .subscribe((res) => (this.collection = res))
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 
   get title(): string {
     return this.book.volumeInfo.title;
@@ -31,17 +54,19 @@ export class BookCardComponent {
     return this.book.volumeInfo.imageLinks.smallThumbnail;
   }
 
-  get isInCollection(): boolean {
-    if(!this.book) return false;
-
-    return true;
+  get inCollection(): boolean {
+    return this.collection.findIndex(f => f.id === this.book.id) > -1;
   }
 
   public toggleBook() {
-    if(this.book.inCollection) {
-      this.store.dispatch(MyCollectionActions.removeBookFromCollection({ book: this.book }));
-    } else{
-      this.store.dispatch(MyCollectionActions.addBookToCollection({ book: this.book }));
+    if (this.inCollection) {
+      this.store.dispatch(
+        MyCollectionActions.removeBookFromCollection({ book: this.book })
+      );
+    } else {
+      this.store.dispatch(
+        MyCollectionActions.addBookToCollection({ book: this.book })
+      );
     }
   }
 }

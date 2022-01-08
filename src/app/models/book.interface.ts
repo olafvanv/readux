@@ -14,5 +14,4 @@ export interface Book {
       smallThumbnail: string;
     };
   };
-  inCollection: boolean;
 }

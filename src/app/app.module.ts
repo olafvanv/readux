@@ -8,13 +8,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ActionReducer, ActionReducerMap, MetaReducer, StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BookSearchModule } from './pages/book-search/book-search.module';
-import { MyCollectionModule } from './pages/my-collection/my-collection.module';
-import { NavigationModule } from './navigation/navigation.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppState } from './state/state';
 import { MyCollectionReducer } from './state/my-collection';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { PagesModule } from './pages/pages.module';
 
 const reducers: ActionReducerMap<AppState> = {
   'MyCollection': MyCollectionReducer
@@ -39,9 +37,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
       maxAge: 25,
     }),
     BrowserAnimationsModule,
-    NavigationModule,
-    BookSearchModule,
-    MyCollectionModule,
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent],
