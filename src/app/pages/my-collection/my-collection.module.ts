@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { MyCollectionReducer } from '../../state/my-collection';
 import { BookSearchModule } from '../book-search/book-search.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BookCardModule } from 'src/app/shared/components/book-card/book-card.module';
 
 
 
@@ -16,7 +17,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     CommonModule,
     StoreModule.forFeature('MyCollection', MyCollectionReducer),
     BookSearchModule,
-    MatToolbarModule
+    MatToolbarModule,
+    BookCardModule
   ]
 })
 export class MyCollectionModule { }
